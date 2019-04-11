@@ -1,8 +1,20 @@
+# temperature-listener.py
+
 import sys
 from subprocess import Popen, PIPE
 
 temperatures = []  # store temperatures
-proc = Popen(['node', 'sensor.js'], stdout=PIPE)
-while proc.poll() is None:
-    out = proc.stdout.read(1)
-    sys.stdout.write(out)
+sensor = Popen(['node', 'sensor.js'], stdout=PIPE)
+buffer = b''
+while True:
+
+    # read sensor data one char at a time
+    out = sensor.stdout.read(1)
+
+    # after a full reading
+    if out == b'\n':
+        temperatures.append(float(buffer))
+        print(temperatures)
+        buffer = b''
+    else:
+        buffer += out  # append to buffer

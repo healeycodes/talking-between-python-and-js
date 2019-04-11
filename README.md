@@ -4,6 +4,10 @@ This repository contains the tutorial code for my article on communicating betwe
 
 <br>
 
+![Desktop](https://github.com/healeycodes/talking-between-python-and-js/blob/master/header.png)
+
+<br>
+
 ### Via JSON
 
 A Flask web app with two routes. `/test` which serves a page with JavaScript that uses the Fetch API to GET JSON data from `/hello`, and then POSTs JSON data, also to `/hello`. Everything is logged to console.
